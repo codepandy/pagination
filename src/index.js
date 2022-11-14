@@ -68,7 +68,7 @@ const Pagination = ({
       onChange(val);
     }
   };
-  return (
+  return total > 0 ? (
     <div className="wenmu-notification-pagination-row">
       <Item
         itemClass={itemClass}
@@ -219,7 +219,7 @@ const Pagination = ({
         onClick={onClickItem.bind(this, "next")}
       />
     </div>
-  );
+  ) : null;
 };
 
 export default Pagination;
