@@ -50,7 +50,12 @@ const Pagination = ({
   itemActiveClass,
   onChange,
 }) => {
-  const pages = Math.ceil(total / pageSize);
+  let pages = 0;
+  if (total > 0) {
+    // 商是整数时，需要减1，索引从0开始，正好需要见1，比如30条数据，
+    pages = Math.floor(total / pageSize);
+    pages = total % pageSize === 0 ? pages : pages + 1;
+  }
   const list = new Array(pages).fill(" ").map((item, index) => index + 1);
 
   const onClickItem = (val) => {
